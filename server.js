@@ -17,14 +17,15 @@ var Message = mongoose.model('Message', {
   message: String
 })
 
-var dbUrl = 'mongodb+srv://thanhdo:Aa123456@cluster0.10buw.mongodb.net/ec_site?retryWrites=true&w=majority'
+var dbUrl = 'mongodb+srv://thanhdo:Aa123456@cluster0.10buw.mongodb.net/socket_sample?retryWrites=true&w=majority'
 app.get('/test', (req, res) => {
   res.status(200).send("Thanks")
 })
 app.get('/health', async function (req, res) {
   return res.status(200).send("Server is working")
 })
-
+io.on('connection', () => { /* … */ });
+server.listen(3000);
 
 //Assign port
 const port = process.env.PORT || 5001;
