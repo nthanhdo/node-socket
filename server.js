@@ -26,7 +26,7 @@ app.get('/health', async function (req, res) {
 })
 
 io.on('connection', () => { /* … */ });
-server.listen(3000);
+http.listen(3000);
 
 //Assign port
 const port = process.env.PORT || 5001;
