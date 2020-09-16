@@ -18,46 +18,19 @@ var Message = mongoose.model('Message', {
 })
 
 var dbUrl = 'mongodb+srv://thanhdo:Aa123456@cluster0.10buw.mongodb.net/ec_site?retryWrites=true&w=majority'
-
-app.get('/messages', (req, res) => {
-  Message.find({}, (err, messages) => {
-    res.send(messages);
-  })
+app.get('/test', (req, res) => {
+  res.status(200).send("Thanks")
 })
-
-app.get('/messages', (req, res) => {
-  Message.find({}, (err, messages) => {
-    res.send(messages);
-  })
-})
-
-app.post('/messages', (req, res) => {
-  var message = new Message(req.body);
-  message.save((err) => {
-    if (err)
-      sendStatus(500);
-    io.emit('message', req.body);
-    res.sendStatus(200);
-  })
-})
-
-io.on('connection', () => {
-  console.log('a user is connected')
+app.get('/health', async function (req, res) {
+  return res.status(200).send("Server is working")
 })
 
 
-mongoose
-    .connect(dbUrl, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    })
-    .then(() => {
-        return console.log("Database URI", dbUrl)
-    })
-    .catch((error) => console.log(error, "error"));
-
-var server = http.listen(3001, () => {
-  console.log('server is running on port', server.address().port);
+//Assign port
+const port = process.env.PORT || 5001;
+// Launch app to the specified port
+app.listen(port, function () {
+  console.log("Running APIs on Port " + port);
 });
 
 // const express = require('express');
