@@ -19,4 +19,4 @@ io.on('connection', (socket) => {
 
 setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
 
-setInterval(() => io.emit('td-do', "Thanks Mày"), 1000);
+setInterval(() => io.emit('td-do', "Tao Đô nè mày"), 1000);
