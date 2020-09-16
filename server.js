@@ -52,7 +52,7 @@ mongoose
         useUnifiedTopology: true,
     })
     .then(() => {
-        return console.log("Database URI", MONGODB_URI)
+        return console.log("Database URI", dbUrl)
     })
     .catch((error) => console.log(error, "error"));
 
