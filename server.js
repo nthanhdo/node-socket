@@ -25,7 +25,13 @@ app.get('/health', async function (req, res) {
   return res.status(200).send("Server is working")
 })
 
-io.on('connection', () => { /* … */ });
+io.on('connection', (socket) => { 
+  console.log("New client connected", socket.id);
+  socket.on("clientSendMessage", (data) => {
+    console.log("Server receieve message", data);
+  })
+
+ });
 http.listen(3000);
 
 //Assign port
