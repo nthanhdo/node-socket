@@ -8,7 +8,7 @@
         el = document.getElementById('server-time');
         el.innerHTML = 'Server time: ' + timeString;
       });
-      socket.on('time', (message) => {
+      socket.on('td-do', (message) => {
         el = document.getElementById('td-do');
         el.innerHTML = 'Message: ' + message;
       });
