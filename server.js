@@ -25,6 +25,7 @@ app.get('/health', async function (req, res) {
   return res.status(200).send("Server is working")
 })
 
+console.log("----Start websocket ------")
 io.on('connection', (socket) => { 
   console.log("New client connected", socket.id);
   socket.on("message", (data) => {
@@ -33,6 +34,7 @@ io.on('connection', (socket) => {
   socket.emit('message', ['Thankss'])
  });
 http.listen(3000);
+console.log("==========Websocket already started======")
 
 //Assign port
 const port = process.env.PORT || 5001;
