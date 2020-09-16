@@ -4,14 +4,18 @@
     <script>
       let socket = io();
       let el;
-
       socket.on('time', (timeString) => {
         el = document.getElementById('server-time');
         el.innerHTML = 'Server time: ' + timeString;
+      });
+      socket.on('time', (message) => {
+        el = document.getElementById('td-do');
+        el.innerHTML = 'Message: ' + timeString;
       });
     </script>
   </head>
   <body>
     <p id="server-time"></p>
+    <p id="td-do"></p>
   </body>
 </html>
