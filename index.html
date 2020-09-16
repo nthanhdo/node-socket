@@ -2,7 +2,7 @@
   <head>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-      let socket = io('asddddd');
+      let socket = io('wss://td-node-socket.herokuapp.com');
       let el;
       socket.on('time', (timeString) => {
         el = document.getElementById('server-time');
