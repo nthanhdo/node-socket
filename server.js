@@ -24,6 +24,7 @@ app.get('/test', (req, res) => {
 app.get('/health', async function (req, res) {
   return res.status(200).send("Server is working")
 })
+
 io.on('connection', () => { /* … */ });
 server.listen(3000);
 
