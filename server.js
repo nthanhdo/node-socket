@@ -27,10 +27,10 @@ app.get('/health', async function (req, res) {
 
 io.on('connection', (socket) => { 
   console.log("New client connected", socket.id);
-  socket.on("clientSendMessage", (data) => {
+  socket.on("message", (data) => {
     console.log("Server receieve message", data);
   })
-
+  socket.emit('message', ['Thankss'])
  });
 http.listen(3000);
 
