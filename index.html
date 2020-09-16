@@ -1,17 +1,14 @@
 <html>
   <head>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
-    integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
-    crossorigin="anonymous"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <script>
-      let HOST = "wss://td-node-socket.herokuapp.com"
-      let ws = new WebSocket(HOST);
+      let socket = io();
       let el;
 
-      ws.onmessage = (event) => {
+      socket.on('time', (timeString) => {
         el = document.getElementById('server-time');
-        el.innerHTML = 'Server time: ' + event.data;
-      };
+        el.innerHTML = 'Server time: ' + timeString;
+      });
     </script>
   </head>
   <body>
