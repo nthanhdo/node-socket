@@ -1,12 +1,15 @@
 <html>
   <head>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
-    integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
-    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
     <script>
-      // let HOST = "wss://td-node-socket.herokuapp.com"
-      var socket = io("wss://td-node-socket.herokuapp.com");
-      socket.on("message", (data) => {console.log(data)})
+      let HOST = "wss://td-node-socket.herokuapp.com:3000"
+      let ws = new WebSocket(HOST);
+      let el;
+
+      ws.onmessage = (event) => {
+        el = document.getElementById('server-time');
+        el.innerHTML = 'Server time: ' + event.data;
+      };
     </script>
   </head>
   <body>
