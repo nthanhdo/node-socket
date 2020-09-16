@@ -1,0 +1,23 @@
+<html>
+
+<head>
+  <script>
+    let HOST = "wss://td-node-socket.herokuapp.com"
+    let client = new WebSocket(HOST);
+    let el;
+
+    client.onmessage = (event) => {
+      el = document.getElementById('server-time');
+      el.innerHTML = 'Server time: rs' + event.data;
+    };
+    client.on("boop", function (socket) {
+        console.log(socket)
+    })
+  </script>
+</head>
+
+<body>
+  <p id="server-time"></p>
+</body>
+
+</html>
